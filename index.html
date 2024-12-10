@@ -15,7 +15,14 @@
         <button id="add-timer">Добавить таймер</button>
     </div>
     <ul id="timers">
-        <!-- Таймеры будут добавляться сюда -->
+        <template id="template">
+            <li>
+                <span class="timer__text">
+                    00:00:00
+                </span>
+                <button class="timer__delete-timer">x</button>
+            </li>
+        </template>
     </ul>
 </div>
 <script src="index.js"></script>
