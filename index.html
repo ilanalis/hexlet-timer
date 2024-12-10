@@ -10,17 +10,17 @@
 </head>
 <body>
 <div id="app">
-    <div>
-        <input type="number" id="time-input" placeholder="Введите время в секундах">
+    <form>
+        <input min="0" type="number" id="time-input" placeholder="Введите время в секундах">
         <button id="add-timer">Добавить таймер</button>
-    </div>
+    </form>
     <ul id="timers">
         <template id="template">
-            <li>
-                <span class="timer__text">
+            <li class="timer hidden">
+                <span class="timer-text">
                     00:00:00
                 </span>
-                <button class="timer__delete-timer">x</button>
+                <button class="delete-timer-button">x</button>
             </li>
         </template>
     </ul>

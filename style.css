@@ -1,0 +1,90 @@
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    background-color: #ebdcb2;
+    margin: 0;
+    padding: 0;
+}
+
+#app{
+    height: 100%;
+    max-width: 532px;
+    margin: 0 auto;
+    padding-top: 200px;
+}
+
+#time-input, #add-timer{
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+}
+
+#time-input{
+    width: 320px;
+    background-color: #c9a66b;
+}
+
+#add-timer, .delete-timer-button{
+    color: #662e1c;
+    background-color: #c9a66b;
+    transition: ease 0.3s all;
+    cursor: pointer;
+}
+
+#add-timer:hover, .delete-timer-button:hover{
+    background-color: #977a4d;
+}
+
+#add-timer:active, .delete-timer-button:active{
+    background-color: #6a5434;
+}
+
+#timers{
+    max-height: 500px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 0.19rem;
+}
+
+.timer{
+    padding-bottom: 5px;
+    color: #662e1c;
+    border-bottom: #662e1c solid 0.5px;
+    transition: ease 0.3s all;
+}
+
+.timer, #timers{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.timer, .delete-timer-button {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 2rem;
+}
+
+.delete-timer-button{
+    width: 70px;
+    border-radius: 15px;
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+
+.hidden {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+

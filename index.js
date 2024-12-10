@@ -3,18 +3,19 @@ const timeInput = document.getElementById('time-input');
 const timersBlock = document.getElementById('timers');
 const template = document.getElementById('template');
 
-addTimerButton.addEventListener('click', () => {
+addTimerButton.addEventListener('click', (e) => {
+    e.preventDefault();
     addTimer(timeInput.value)
 })
 
 function addTimer(time) {
     const newTimer = template.content.firstElementChild.cloneNode(true);
-    const deleteTimerButton = newTimer.querySelector('.timer__delete-timer');
+    const deleteTimerButton = newTimer.querySelector('.delete-timer-button');
     let timeCopy = time;
 
     appendText(newTimer, timeCopy);
     timersBlock.appendChild(newTimer);
-
+    makeTimerVisible(newTimer);
     const intervalId = setInterval(()=>{
         timeCopy = timeCopy - 1;
         appendText(newTimer, timeCopy)
@@ -23,7 +24,7 @@ function addTimer(time) {
     setTimeout(()=>{
         removeChildNode(newTimer);
         clearInterval(intervalId);
-    }, time*1000 + 1000);
+    }, time*1000 + 500);
 
     deleteTimerButton.addEventListener('click', () => {
         removeChildNode(newTimer);
@@ -43,10 +44,21 @@ function formatTime(seconds) {
     ].join(':');
 }
 
+function makeTimerVisible(newTimer) {
+    setTimeout(() => {
+        newTimer.classList.remove('hidden');
+        newTimer.classList.add('visible');
+    }, 10); // Задержка на выполнение анимации
+}
+
 function removeChildNode(node) {
-    node.parentNode.removeChild(node);
+    node.classList.remove('visible');
+    node.classList.add('hidden');
+    setTimeout(()=>{
+        node.parentNode.removeChild(node);
+    }, 200)
 }
 
 function appendText(node, text){
-    node.querySelector('.timer__text').innerText = formatTime(text);
+    node.querySelector('.timer-text').innerText = formatTime(text);
 }
